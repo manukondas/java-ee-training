@@ -13,15 +13,18 @@ public class GreetingServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String name = req.getParameter("q");
+		/*String name = req.getParameter("q");
 		resp.setContentType("text/html");
 		PrintWriter out = resp.getWriter();
 		out.println("<html>");
 		out.println("<body>");
 		out.println("<h1>Welcome to My Website Mr."+name+"</h1>");
 		out.println("</body>");
-		out.println("</html>");
+		out.println("</html>");*/
 		
+		//resp.sendRedirect("products");
+		
+		req.getRequestDispatcher("products").forward(req, resp);
 		
 	}
 }
