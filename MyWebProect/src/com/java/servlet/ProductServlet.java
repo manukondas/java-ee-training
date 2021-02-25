@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -25,39 +26,26 @@ public class ProductServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		resp.setContentType("text/html");
-		PrintWriter out = resp.getWriter();
-		out.println("<html>");
-		out.println("<body>");
-		out.println("<table border=1>");
-		out.println("<tr>");
-		out.println("<th>");
-		out.println("Name");
-		out.println("</th>");
-		out.println("<th>");
-		out.println("Qty");
-		out.println("</th>");
-		out.println("<th>");
-		out.println("Price");
-		out.println("</th>");
-		out.println("</tr>");
-		for(Product product:products) {
-			out.println("<tr>");
-			out.println("<td>");
-			out.println(product.getName());
-			out.println("</td>");
-			out.println("<td>");
-			out.println(product.getQty());
-			out.println("</td>");
-			out.println("<td>");
-			out.println(product.getPrice());
-			out.println("</td>");
-			out.println("</tr>");
-		}
-		out.println("</table>");
-		out.println("</body>");
-		out.println("</html>");
 		
+				Cookie[] cookies = req.getCookies();
+		
+		for(Cookie cookie:cookies) {
+	
+			System.out.println(cookie.getName());
+			System.out.println(cookie.getValue());
+			System.out.println(cookie.getDomain());
+			System.out.println(cookie.getMaxAge());
+			
+		}
+		
+		Cookie cookie1 = new Cookie("siva", "website");
+		cookie1.setMaxAge(89600);
+			resp.addCookie(cookie1);	
+
+		
+		req.setAttribute("abhinavProducts", products);
+		
+		req.getRequestDispatcher("products.jsp").forward(req, resp);
 		
 		
 	}
