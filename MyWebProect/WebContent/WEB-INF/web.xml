@@ -33,4 +33,30 @@
   <servlet-name>Product</servlet-name>
   <url-pattern>/products</url-pattern>
   </servlet-mapping>
+  
+       <servlet>
+  <servlet-name>User</servlet-name>
+  <servlet-class>com.java.servlet.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>User</servlet-name>
+  <url-pattern>/users</url-pattern>
+  </servlet-mapping>
+  
+        <servlet>
+  <servlet-name>DeleteUser</servlet-name>
+  <servlet-class>com.java.servlet.DeleteUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>DeleteUser</servlet-name>
+  <url-pattern>/remove</url-pattern>
+  </servlet-mapping>
+        <servlet>
+  <servlet-name>UpdateUser</servlet-name>
+  <servlet-class>com.java.servlet.UpdateUserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  <servlet-name>UpdateUser</servlet-name>
+  <url-pattern>/update</url-pattern>
+  </servlet-mapping>
 </web-app>

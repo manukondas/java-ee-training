@@ -2,6 +2,7 @@ package com.java.jdbc;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -39,8 +40,17 @@ public class JdbcTest {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = DriverManager.getConnection(url, username, password);
-			Statement statement = connection.createStatement();
+			
+			/*Select * from users where username = ?
+			 * 
+			 * Statement : Generic statement (Compile the SQL at DB and execute the SQL query and get the result)
+			 * Prepared Statement : Select * from users where username = 'siva'
+			 * CallableStatement : only used to invoke stored procedure on the database
+			 * 
+			 * */
 			String sql ="Select * from users";
+			
+			PreparedStatement statement = connection.prepareStatement(sql);
 			ResultSet resultSet = statement.executeQuery(sql);
 			while(resultSet.next()) {
 				
