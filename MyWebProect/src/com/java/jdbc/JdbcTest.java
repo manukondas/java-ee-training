@@ -37,6 +37,8 @@ public class JdbcTest {
 	
 	public static void main(String[] args) {
 		
+		
+		
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			Connection connection = DriverManager.getConnection(url, username, password);
