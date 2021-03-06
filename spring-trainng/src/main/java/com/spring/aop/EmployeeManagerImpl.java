@@ -17,7 +17,7 @@ public class EmployeeManagerImpl implements EmployeeManager
  
     public void createEmployee(EmployeeDTO employee) {
         System.out.println("Method createEmployee() called");
-        throw new NullPointerException();
+       // throw new NullPointerException();
     }
  
     public void deleteEmployee(Integer employeeId) {

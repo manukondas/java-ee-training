@@ -13,7 +13,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         expression="execution(* com.spring.aop.EmployeeManager.*(..))" />
 <aop:pointcut id="transactionOperation"
         expression="execution(* com.spring.aop.EmployeeManager.getEmployeeById(..))" />
-<aop:pointcut expression="execution(* com.spring.aop.EmployeeManagerImpl.*(..))" id="exceptionOperation"/>
+ <aop:pointcut expression="execution(* com.spring.aop.EmployeeManagerImpl.*(..))" id="exceptionOperation"/> 
         
     <!-- Spring AOP aspect 1 -->
 <aop:aspect id="loggingAspect" ref="loggingAspectBean">
@@ -26,9 +26,9 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         <aop:before pointcut-ref="transactionOperation" method="getEmployeeById" />
     </aop:aspect>
     
-     <aop:aspect id="exceptionAspect" ref="exceptionAspectBean">
+  <!--   <aop:aspect id="exceptionAspect" ref="exceptionAspectBean">
         <aop:after-throwing pointcut-ref="exceptionOperation" method="logAfterThrowingAllMethods" />
-    </aop:aspect>
+    </aop:aspect> --> 
 </aop:config>
     <!-- Spring AOP aspect instances -->
     <bean id="loggingAspectBean" class="com.spring.aop.EmployeeCRUDLoggingAspect" />
