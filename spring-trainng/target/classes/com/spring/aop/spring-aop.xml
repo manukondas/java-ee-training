@@ -26,9 +26,9 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
         <aop:before pointcut-ref="transactionOperation" method="getEmployeeById" />
     </aop:aspect>
     
-  <!--   <aop:aspect id="exceptionAspect" ref="exceptionAspectBean">
-        <aop:after-throwing pointcut-ref="exceptionOperation" method="logAfterThrowingAllMethods" />
-    </aop:aspect> --> 
+     <aop:aspect id="exceptionAspect" ref="exceptionAspectBean">
+        <aop:after-throwing pointcut-ref="exceptionOperation" method="logAfterThrowingAllMethods" throwing="ex" />
+    </aop:aspect> 
 </aop:config>
     <!-- Spring AOP aspect instances -->
     <bean id="loggingAspectBean" class="com.spring.aop.EmployeeCRUDLoggingAspect" />
