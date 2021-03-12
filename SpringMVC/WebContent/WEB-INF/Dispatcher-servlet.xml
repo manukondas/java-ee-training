@@ -3,12 +3,14 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:p="http://www.springframework.org/schema/p"
     xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:mvc="http://www.springframework.org/schema/mvc"
     xsi:schemaLocation="
         http://www.springframework.org/schema/beans
         https://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/context
-        https://www.springframework.org/schema/context/spring-context.xsd">
-        
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+        <mvc:annotation-driven/>
         <context:component-scan base-package="com.spring.controller,com.spring.service,com.spring.repository"></context:component-scan>
         <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <constructor-arg name="prefix" value="/WEB-INF/"/>
@@ -22,5 +24,7 @@
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         </bean>
         
-      
+      <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="error-message"/>
+</bean>
         </beans>
