@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd">
+        
+        <context:component-scan base-package="com.spring.controller,com.spring.service,com.spring.repository"></context:component-scan>
+        <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <constructor-arg name="prefix" value="/WEB-INF/"/>
+        <constructor-arg name="suffix" value=".jsp"/>
+        </bean>
+        
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <constructor-arg name="url" value="jdbc:mysql://localhost:3306/exampledb"></constructor-arg>
+        							    <constructor-arg name="username" value="root"></constructor-arg>
+        <constructor-arg name="password" value="password"></constructor-arg>
+        <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+        </bean>
+        
+      
+        </beans>
