@@ -23,8 +23,9 @@
         <constructor-arg name="password" value="password"></constructor-arg>
         <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
         </bean>
-        
+    
       <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="error-message"/>
+       <property name="basename" value="classpath:resources/error-message" />
+   <property name="useCodeAsDefaultMessage" value="true" />
 </bean>
         </beans>

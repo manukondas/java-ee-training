@@ -25,4 +25,9 @@ public User getUserByUsername(String username){
 		return repository.getUser(username);
 	}
 
+public void updatePassword(String username, String password){
+	
+	 repository.updatePassword(username,password);
+}
+
 }

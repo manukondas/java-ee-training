@@ -39,4 +39,14 @@ public class UserRepository {
 			return user;
 			
 		}
+	
+	public void updatePassword(String username, String password){
+		
+		
+		 jdbcTemplate.update("update users set password=? where username=?", new Object[] {password,username});
+		
+			
+	
+			
+		}
 }

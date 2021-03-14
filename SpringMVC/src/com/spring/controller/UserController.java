@@ -62,8 +62,8 @@ public class UserController {
 			model.addAttribute("error", "true");
 			return "editUsers";
 		}
-		System.out.println("Username : "+userModel.getUsername());
-		System.out.println("Password : "+userModel.getPassword());
+		
+		service.updatePassword(userModel.getUsername(), userModel.getPassword());
 		
 		return "redirect: users";
 	}
