@@ -31,4 +31,13 @@ public void updatePassword(String username, String password){
 	 repository.updatePassword(username,password);
 }
 
+public boolean isValidLogin(String username, String password) {
+	
+	User user = repository.getUser(username);
+	
+	return password.equalsIgnoreCase(user.getPassword());
+	
+	
+}
+
 }

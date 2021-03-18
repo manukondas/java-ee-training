@@ -1,0 +1,40 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:aop="http://www.springframework.org/schema/aop"
+      xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">    <!-- We don't need to this; This is required only in annotation based AOP support -->
+    <!-- <aop:aspectj-autoproxy /> -->
+ 
+
+<aop:config>
+    <!-- Spring AOP Pointcut definitions -->
+<aop:pointcut id="loggingOperation"
+        expression="execution(* com.spring.aop.EmployeeManager.*(..))" />
+<aop:pointcut id="transactionOperation"
+        expression="execution(* com.spring.aop.EmployeeManager.getEmployeeById(..))" />
+ <aop:pointcut expression="execution(* com.spring.aop.EmployeeManagerImpl.*(..))" id="exceptionOperation"/> 
+        
+    <!-- Spring AOP aspect 1 -->
+<aop:aspect id="loggingAspect" ref="loggingAspectBean">
+        <!-- Spring AOP advises -->
+        <aop:before pointcut-ref="loggingOperation" method="logBefore" />
+        <aop:after pointcut-ref="loggingOperation" method="logAfter" />
+</aop:aspect>
+    <!-- Spring AOP aspect 2 -->
+    <aop:aspect id="transactionAspect" ref="transactionAspectBean">
+        <aop:before pointcut-ref="transactionOperation" method="getEmployeeById" />
+    </aop:aspect>
+    
+     <aop:aspect id="exceptionAspect" ref="exceptionAspectBean">
+        <aop:after-throwing pointcut-ref="exceptionOperation" method="logAfterThrowingAllMethods" throwing="ex" />
+    </aop:aspect> 
+</aop:config>
+    <!-- Spring AOP aspect instances -->
+    <bean id="loggingAspectBean" class="com.spring.aop.EmployeeCRUDLoggingAspect" />
+    <bean id="transactionAspectBean" class="com.spring.aop.EmployeeCRUDTransactionAspect" />
+    <bean id="exceptionAspectBean" class="com.spring.aop.ExceptionAspect"></bean>
+    <!-- Target Object -->
+    <bean id="employeeManager" class="com.spring.aop.EmployeeManagerImpl" />
+ 
+</beans>

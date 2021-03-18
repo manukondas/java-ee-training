@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd">
+        
+    <bean id="student" class="com.spring.core.Student" lazy-init="false" init-method="init" destroy-method="destroy">
+   
+   <!--   <property name="id" value="1"></property>
+   <property name="name" value="Siva"></property>
+   <property name="address" ref="address"></property> --> 
+ <constructor-arg value="Siva" name="name"></constructor-arg>
+    <constructor-arg value="1" name="id"></constructor-arg>
+    <constructor-arg ref="address" name="address"></constructor-arg>
+    <constructor-arg name="marks">
+    
+ <map>
+ <entry>
+ <key><value>English</value></key>
+ <value>10</value>
+ </entry>
+  <entry>
+ <key><value>Science</value></key>
+ <value>20</value>
+ </entry>
+  <entry>
+ <key><value>Math</value></key>
+ <value>30</value>
+ </entry>
+ </map>
+    
+    
+    </constructor-arg>
+    </bean>
+    
+          <bean id="address" class="com.spring.core.Address">
+   
+   <constructor-arg value="123 Main St" name="addressLane"></constructor-arg>
+    <constructor-arg value="Irving" name="city"></constructor-arg> 
+     <constructor-arg value="Texas" name="state"></constructor-arg> 
+      <constructor-arg value="75038" name="zip"></constructor-arg> 
+    </bean>
+</beans>
